@@ -1,6 +1,12 @@
 #include "linear.h"
 
-int linear()
+int linear(int arr[], int n, int search)
 {
-	// Code
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] == search)
+			return arr[i];
+	}
+
+	return -1;
 }

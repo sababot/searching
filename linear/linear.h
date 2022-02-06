@@ -1,1 +1,1 @@
-int linear();
+int linear(int[], int, int);
