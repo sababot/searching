@@ -5,6 +5,7 @@
 
 #include "binary/binary.h"
 #include "linear/linear.h"
+#include "jump/jump.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -80,7 +81,7 @@ int main()
 	cout << "------------------------------------------------------------\n";
 
 	// perform algorithm
-	if (algorithm == 1)
+	if (algorithm == 1) // linear
 	{
 		auto start = high_resolution_clock::now();
 		int search_found = linear(starting_array, array_length, search);
@@ -94,10 +95,24 @@ int main()
 			cout << search << " was not found in this array" << endl;
 	}
 
-	else if (algorithm == 2)
+	else if (algorithm == 2) // binary
 	{
 		auto start = high_resolution_clock::now();
 		int search_found = binary(starting_array, 0, array_length, search);
+		auto stop = high_resolution_clock::now();
+
+		auto duration = duration_cast<microseconds>(stop - start);
+
+		if (search_found != -1)
+			cout << search_found << " was the position of " << search << ", found in " << duration.count() << " miliseconds" << endl;
+		else
+			cout << search << " was not found in this array" << endl;
+	}
+
+	else if (algorithm == 3) // jump
+	{
+		auto start = high_resolution_clock::now();
+		int search_found = jump(starting_array, array_length, search);
 		auto stop = high_resolution_clock::now();
 
 		auto duration = duration_cast<microseconds>(stop - start);
