@@ -1,1 +1,1 @@
-int binary();
+int binary(int[], int, int, int);
